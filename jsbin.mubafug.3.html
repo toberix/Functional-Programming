@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by toberix (http://jsbin.com/mubafug/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<button id="main_button">Click her to capitalise</button>
+<script id="jsbin-javascript">
+(function(){
+  "use strict";
+  
+  var SomeText = function(words){
+    this.words = words;
+  };
+  
+  SomeText.prototype.mergingWords = function(str){
+    var firstLetter = str.charAt(0);
+    var remainderLetter = str.substring(1);
+    return [firstLetter.toUpperCase(), remainderLetter].join("");
+  }
+  
+  SomeText.prototype.changingWords = function(){
+    var outputResult = [];
+    var splitingArray = this.words.split(" ");
+    
+    for (var counter = 0; counter < splitingArray.length; counter++){
+      outputResult.push(this.mergingWords(splitingArray[counter]));
+    };
+    return outputResult.join(" ");
+  };
+  
+ document.getElementById("main_button").addEventListener("click", function(e){
+   var wordPrompt = prompt("give me text to capitalise");
+   var textNew = new SomeText(wordPrompt);
+   
+   alert(textNew.changingWords());
+ });
+   
+}());
+</script>
+</body>
+</html>
